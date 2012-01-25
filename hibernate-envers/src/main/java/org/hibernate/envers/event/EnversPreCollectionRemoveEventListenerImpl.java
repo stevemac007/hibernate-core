@@ -44,7 +44,7 @@ public class EnversPreCollectionRemoveEventListenerImpl
 	@Override
 	public void onPreRemoveCollection(PreCollectionRemoveEvent event) {
         CollectionEntry collectionEntry = getCollectionEntry( event );
-        if ( collectionEntry != null && !collectionEntry.getLoadedPersister().isInverse() ) {
+        if ( collectionEntry != null && collectionEntry.getLoadedPersister() != null && !collectionEntry.getLoadedPersister().isInverse() ) {
             onCollectionAction( event, null, collectionEntry.getSnapshot(), collectionEntry );
         }
 	}
